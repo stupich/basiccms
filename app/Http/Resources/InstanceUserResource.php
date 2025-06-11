@@ -3,12 +3,12 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\PostResource;
+use App\Http\Resources\InstancePostResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /*
  * @OA\Schema(
- *     schema="UserResource",
+ *     schema="InstanceUserResource",
  *     type="object",
  *     @OA\Property(property="id", type="integer"),
  *     @OA\Property(property="name", type="string"),
@@ -18,7 +18,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * )
  */
 
-class UserResource extends JsonResource
+class InstanceUserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -31,7 +31,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'posts' => PostResource::collection($this->posts),
+            'posts' => $this->posts,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
